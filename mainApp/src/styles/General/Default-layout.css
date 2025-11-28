@@ -1,0 +1,163 @@
+nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 95px;
+    background-color: #c9b5ff83;
+    left: 0;
+    overflow: hidden;
+    transition: width 1s cubic-bezier(0.87, 0, 0.13, 1) 0s;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+    border-radius: 0px 40px 40px 0px;
+}
+
+.logo{
+    text-align: center;
+    display: flex;
+    transition: all 0.5s ease;
+    margin: 15px 0 0 15px;
+}
+
+.logo img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.logo span{
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.link {
+    position: relative;
+    color: #6B5A7B;
+    font-size: 16px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+}
+.fas{
+    position: relative;
+    width: 60px;
+    height: 50px;
+    top: 14px;
+    font-size:20px ;
+    text-align: center;
+}
+.nav-item{
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+}
+.link:hover{
+    background: #D0C0FF;
+    color: #7B4AFF;
+}
+nav:hover{
+    width: 300px;
+    transition: all 0.7s ease;
+}
+
+.logout{
+    position: absolute;
+    color: #6B5A7B;
+    font-size: 14px;
+    display: table;
+    width: 300px;
+    padding: 10px;
+    bottom:2%;
+    text-indent: 5%;
+}
+.logout:hover{
+    background: #D0C0FF; 
+    color: #7B4AFF;
+}
+
+@media (max-width: 768px) {
+    nav {
+        width: 60px;
+    }
+
+    nav:hover {
+        width: 280px;
+    }
+
+    .logo {
+        margin-left: 5px;
+    }
+
+    .logo span {
+        display: none;
+    }
+
+    nav:hover .logo span {
+        display: inline;
+    }
+
+    .nav-item {
+        display: none;
+    }
+
+    nav:hover .nav-item {
+        display: inline;
+    }
+
+    .link,
+    .logout {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .fas {
+        margin: 0 auto;
+    }
+}
+
+.footer {
+    background-color: #ddcfff;
+    padding: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+    border-top: 1px solid #d3c0ff;
+    box-shadow: 0 -5px 15px rgba(72, 0, 160, 0.321);
+}
+
+.footer-content {
+    min-width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.footer-content p {
+    color: #6B5A7B;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: #6B5A7B;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #500e8d;
+}

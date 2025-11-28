@@ -1,0 +1,89 @@
+.pagina-ejercicios {
+    padding: 2rem;
+    background-color: #f9fafb;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .titulo-emocion {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .tarjetas-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .tarjeta-ejercicio {
+    background-color: #fffbe6;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-align: center;
+  }
+  
+  .tarjeta-ejercicio:hover {
+    transform: scale(1.05);
+  }
+  
+  .icono-ejercicio {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nombre-ejercicio {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .desc-ejercicio {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .modal-ejercicio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-contenido {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cerrar-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .icono-ejercicio-grande {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  

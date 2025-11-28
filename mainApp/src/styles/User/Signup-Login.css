@@ -1,0 +1,77 @@
+/*Login*/
+.Login-card{
+    display: block;
+    padding: 25px;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 20px 35px rgba(52, 0, 129, 0.288);
+    background: white;
+    border-radius: 20px;
+}
+
+/*Signup*/
+.Signup-card {
+    display: block;
+    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    margin: 30px;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 20px 35px rgba(52, 0, 129, 0.288);
+    background: white;
+    border-radius: 20px;
+}
+
+/*General*/
+.texto-donation {
+    max-width: auto;
+}
+
+.formulario__label {
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.formulario__input { 
+    width: 70%;
+    padding-left: 10px;
+    border-radius: 10px;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 15px;
+    padding: 0 40px 0 10px;
+    background-color: #F8F5FF;
+    border: 3px solid #E6E0F0;
+    cursor: pointer;
+    transition: .3s ease all;
+    font-size: 17px;
+    color: rgb(122, 43, 226);
+}
+
+.formulario__input:focus { 
+    outline: none;
+    border: 3px solid hsla(260, 67%, 58%, 0.685);
+    color: rgba(104, 33, 190, 0.804);
+    box-shadow: 0 20px 35px rgba(93, 27, 191, 0.306);
+}
+
+.align-center {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+

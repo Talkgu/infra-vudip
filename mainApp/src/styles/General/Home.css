@@ -1,0 +1,132 @@
+.home-css{
+    display: block;
+    padding: 25px;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 20px 35px rgba(52, 0, 129, 0.288);
+    background: white;
+    border-radius: 20px;
+}
+
+.separador-form{
+    max-width: 100px;
+}
+
+.welcome-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    border-radius: 30px;
+    flex-direction: column;
+}
+
+
+.button-usuario-welcome{
+    width: 250px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 18px;
+}
+
+.button-consultor-welcome{
+    background-color: #ffffff;
+    color: #7B4AFF;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #7B4AFF;
+    width: 250px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 18px;
+}
+
+.button-google{
+    justify-content: center;
+    width: 290px;
+    height: 40px;
+    background-color: #ffffff;
+    color: #6B5A7B;
+    border-color: #E2E8F0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 7px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.button-facebook{
+    justify-content: center;
+    padding: auto;
+    width: 290px;
+    height: 40px;
+    background-color: #ffffff;
+    color: #6B5A7B;
+    border-color: #E2E8F0;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 7px;
+    font-size: 20px;
+}
+
+.button-registro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #7B4AFF;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 7px;
+    margin: 0px;
+}
+
+.button-registro:hover{
+    box-shadow: 0 20px 35px rgba(102, 0, 255, 0.227);
+    transition: .3s ease all;
+    cursor: pointer;
+}
+
+.button-inicioSesion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7B4AFF;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 7px;
+    margin: 0px;
+}
+
+.image-icon{
+    margin-right: 6px;
+}
+
+.parraf {
+color: #6B5A7B; 
+font-size: 1.25rem; 
+margin: 0; 
+text-align: center; 
+background-color: #eaf2f8; 
+border-radius: 8px; 
+padding: 12px 20px; 
+box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); 
+}
+
+@media (max-width: 800px) {
+h1 {
+font-size: 2.5rem; 
+}
+p {
+font-size: 1rem; 
+}
+}

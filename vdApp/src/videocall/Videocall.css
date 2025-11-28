@@ -1,0 +1,166 @@
+:root {
+    --vc-padding: 1rem;
+    --local-padding: 2rem;
+    --local-size: 16vmin;       /* responsive local preview size */
+    --local-max-size: 360px;    /* cap the size on large screens */
+    --local-min-size: 90px;     /* minimum size on small screens */
+    --local-border: 2px;
+    --local-radius: 10px;
+    --remote-radius: 12px;
+    --transition-duration: 180ms;
+    --foreground-color: #f1ebff;
+    --hover-color: #f1ebff42;
+    --remote-bg: #2a2020da;
+    --background: #513e84;
+    --local-bg: rgba(0,0,0,0.45);
+}
+
+/* Container that fills viewport but respects safe area (iOS) */
+.Videocall {
+    position: relative;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    background-color: var(--background);
+    overflow: hidden;
+}
+
+/* Remote (main) video wrapper — flexible margins and rounded corners */
+.remote-container {
+    position: absolute;
+    inset: var(--vc-padding);
+    border-radius: var(--remote-radius);
+    overflow: hidden;
+    background-color: var(--remote-bg);
+    display: grid;
+    place-items: center;
+}
+
+.remote-container > video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Local preview — responsive, clamped size, placed with CSS variables */
+.local-container{
+    position: absolute;
+    /* offset from edges, uses safe-area inset */
+    top: calc(var(--local-padding) + env(safe-area-inset-top, 0px));
+    right: calc(var(--local-padding) + env(safe-area-inset-right, 0px));
+    width: clamp(var(--local-min-size), var(--local-size), var(--local-max-size));
+    height: clamp(var(--local-min-size), var(--local-size), var(--local-max-size));
+    border-radius: var(--local-radius);
+    z-index: 10;
+    background-color: var(--local-bg);
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    display: grid;
+    place-items: center;
+    transition: transform var(--transition-duration) ease, opacity var(--transition-duration) ease;
+}
+
+/* Local video/image styling */
+.local-container > video,
+.local-container > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+
+/* Controls bar fixed to bottom */
+.Videocall .controls {
+    position: fixed;
+    left: env(safe-area-inset-left, 0px);
+    right: env(safe-area-inset-right, 0px);
+    bottom: env(safe-area-inset-bottom, 0px);
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem calc(1rem + env(safe-area-inset-left, 0px)) 0.75rem calc(1rem + env(safe-area-inset-right, 0px));
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.55));
+    backdrop-filter: blur(6px);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    border-radius: 36px;
+    z-index: 20;
+    box-sizing: border-box;
+}
+  
+/* Button base */
+.Videocall .controls button {
+    border: 0;
+    cursor: pointer;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+    border-radius: 36px;
+    color: var(--foreground-color);
+    background: rgba(255,255,255,0.06);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.45);
+}
+
+.Videocall .controls button:hover {
+    background-color: var(--hover-color);
+}
+
+.Videocall .controls button > img {
+    width: 4vmin;
+    height: 4vmin;
+}
+
+/* Compact layout on small screens: make buttons smaller and allow wrap */
+@media (max-width: 520px) {
+    .Videocall .controls {
+        gap: 0.4rem;
+        padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px));
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .Videocall .controls button {
+        padding: 0.45rem 0.7rem;
+        font-size: 0.88rem;
+        border-radius: 10px;
+        min-width: 84px;
+    }
+}
+
+/* Ensure controls don't overlap the local preview on small screens */
+@media (max-width: 520px) {
+    .local-container {
+        bottom: calc(var(--local-padding) + env(safe-area-inset-bottom, 0px) + 56px); /* lift above controls */
+    }
+}
+
+/* Small modifier: dock local preview to bottom-left on narrow screens */
+@media (max-width: 520px){
+    .local-container{
+        top: auto;
+        bottom: calc(var(--local-padding) + env(safe-area-inset-bottom, 0px));
+        left: calc(var(--local-padding) + env(safe-area-inset-left, 0px));
+        right: auto;
+        width: clamp(80px, 20vmin, 140px);
+        height: clamp(80px, 20vmin, 140px);
+        opacity: 0.95;
+    }
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+    .local-container,
+    .remote-container{
+        transition: none;
+    }
+}
