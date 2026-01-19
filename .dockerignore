@@ -1,0 +1,24 @@
+# Vagrant
+.vagrant/
+Vagrantfile
+
+# Logs y temporales
+*.log
+*.tmp
+
+# Node.js
+node_modules/
+
+# Prometheus/Grafana data (volúmenes locales)
+prometheus_data/
+grafana_data/
+
+# Exporters resultados (solo queremos scripts, no los .prom generados)
+exporters/metrics/*.prom
+
+# Git
+.git
+.gitignore
+
+# Otros
+readme.txt
