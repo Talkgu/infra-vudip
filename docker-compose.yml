@@ -1,26 +1,85 @@
+volumes:
+  prometheus_data:
+  grafana_data:
+
 services:
-  mainapp:
-    build:
-      context: ./mainApp
-      dockerfile: Dockerfile
-    container_name: mainapp
-    restart: always
-
-  vdapp:
-    build:
-      context: ./vdApp
-      dockerfile: Dockerfile
-    container_name: vdapp
-    restart: always
-
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    depends_on:
-      - mainapp
-      - vdapp
-    expose:
-      - "80"
+  # PROMETHEUS
+  prometheus:
+    image: prom/prometheus:v2.51.2
+    container_name: prometheus
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
     restart: always
+    networks:
+      - vudip-network
+
+  # GRAFANA
+  grafana:
+    image: grafana/grafana:10.4.0
+    container_name: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    restart: always
+    networks:
+      - vudip-network
+
+  # NODE EXPORTER
+  node-exporter:
+    image: prom/node-exporter:v1.8.1
+    container_name: node-exporter
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--path.rootfs=/rootfs'
+      - '--collector.textfile.directory=/var/lib/node_exporter/textfile_collector'
+    ports:
+      - "9100:9100"
+    restart: always
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+      - ./exporters/metrics:/var/lib/node_exporter/textfile_collector
+    networks:
+      - vudip-network
+
+  # CADVISOR
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.2
+    container_name: cadvisor
+    ports:
+      - "8081:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /dev/disk/:/dev/disk:ro
+    restart: always
+    networks:
+      - vudip-network
+
+  # POSTGRES EXPORTER
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter:v0.15.0
+    container_name: postgres-exporter
+    environment:
+      DATA_SOURCE_NAME: "postgresql://postgres:postgres123@vudip-postgres:5432/vudip?sslmode=disable"
+      PG_EXPORTER_AUTO_DISCOVER_DATABASES: "true"
+    depends_on:
+      - prometheus
+    ports:
+      - "9187:9187"
+    restart: always
+    networks:
+      - vudip-network
+
+networks:
+  vudip-network:
+    external: true
