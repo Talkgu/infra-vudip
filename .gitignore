@@ -1,0 +1,17 @@
+# Vagrant
+.vagrant/
+Vagrantfile
+
+# Logs y temporales
+*.log
+*.tmp
+
+# Node.js
+node_modules/
+
+# Prometheus/Grafana data
+prometheus_data/
+grafana_data/
+
+# Exporters resultados
+exporters/metrics/*.prom
