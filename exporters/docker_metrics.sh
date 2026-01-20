@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OUTPUT="$(dirname "$0")/../metrics/docker_metrics.prom"
+OUTPUT="$(dirname "$0")/metrics/docker_metrics.prom"
 NOW=$(date +%s)
 
 # Limpiamos el archivo anterior
